@@ -1,9 +1,25 @@
 import mongoose from "mongoose";
+import { createServer } from "node:http";
+import { Server } from "socket.io";
 import createApp from "./appBuild.js";
+import { ChatClass } from "./controllers/chatController.js";
 import "dotenv/config";
 
-const server = createApp();
+const app = createApp();
+const server = createServer(app);
+export const io = new Server(server);
 
+io.on('connection', (socket) => {
+  socket.on('connection'), console.log('Socket is listening');
+
+  socket.on('send message', (message, room, senderId) => {
+    ChatClass.sendChat(message, room, senderId)
+  });
+
+  socket.on('join room', (room) => {
+    ChatClass.joinRoom(room);
+  })
+});
 
 mongoose
     .connect(`mongodb://${process.env.HOST}/${process.env.DBNAME}`)
