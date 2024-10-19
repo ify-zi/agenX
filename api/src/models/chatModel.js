@@ -5,6 +5,10 @@ const chatSchema = new mongoose.Schema({
     'required': true,
     'type': mongoose.Schema.Types.String,
   },
+  'senderId': {
+    'required': true,
+    'type': mongoose.Schema.Types.String
+  },
 
   'roomId': {
     'required': true,

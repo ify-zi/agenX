@@ -1,6 +1,7 @@
 import express from "express";
 import session from "express-session";
 import passport from "./utils/authStrategy.js";
+import routes from "./routes/index.js";
 
 
 export default  function createApp() {
@@ -23,7 +24,7 @@ export default  function createApp() {
                   extended: true
                 }
               ))
-  //app.use(router)
+  app.use(routes)
 
   return app;
 }

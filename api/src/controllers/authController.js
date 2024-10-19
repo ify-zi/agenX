@@ -1,6 +1,11 @@
 import User from "../models/userModel.js";
+import logUser from "../utils/logUser.js";
+import passport from "../utils/authStrategy.js";
 
-export class Auth {
+// Class is responsible for authentication
+
+export default class Auth {
+  // class method creates a user and returns the user object
   static async createUser(req, res) {
     const { body } = req;
     const name = (body.name) ? body.name : "null";
@@ -31,6 +36,12 @@ export class Auth {
     }
   }
 
+  // method handles user login criteria
+  static localLogin(req, res) {
+    passport.authenticate('local', logUser(err, user, info, req, res))
+  }
+
+  //method handles logout
   static async logout(req, res) {
     const { user } = req.user;
     if (!user) return res.status(401)
