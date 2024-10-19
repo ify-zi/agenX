@@ -10,12 +10,12 @@ review.get('/reviews',)
 review.get('/reviews/:id',)
 
 //Create a review
-review.post('/reviews',)
+review.post('/reviews', verifyUser)
 
 //update a review
-review.put('/reviews/:id',)
+review.put('/reviews/:id', verifyUser)
 
 //delete a review
-review.delete('/reviews/:id',)
+review.delete('/reviews/:id', verifyUser)
 
 export default review;

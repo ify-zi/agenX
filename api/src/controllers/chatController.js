@@ -12,7 +12,7 @@ export class ChatClass {
           'senderId': senderId
         });
         await msg.save();
-        io.to(room).emit(message)
+        io.to(room).emit(message, senderId)
         return true;
       }
     } catch(err){
@@ -26,8 +26,12 @@ export class ChatClass {
   }
 
   static async getChat(req, res) {
-    const chatId = req.body.conversationId
-    const chats = await Chat.find({conversationid: chatId})
+    const roomId = req.body.roomId
+    const chats = await Chat.find({roomId: chatId})
     return res.status(200).json(chats)
+  }
+
+  static async editChat(req, res) {
+    const chatId = req.body.chatId;
   }
 }

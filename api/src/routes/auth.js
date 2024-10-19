@@ -10,6 +10,6 @@ auth.post('/auth/login', Auth.localLogin)
 
 auth.get('/auth/google', passport.authenticate('google', {scope: ['email', 'profile']} ))
 
-auth.post('/auth/logout', )
+auth.post('/auth/logout',verifyUser, Auth.logout)
 
 export default auth;
