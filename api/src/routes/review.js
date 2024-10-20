@@ -7,7 +7,7 @@ const review = Router();
 review.get('/reviews',)
 
 //GET a review
-review.get('/reviews/:id',)
+review.get('/reviews/:id', verifyUser)
 
 //Create a review
 review.post('/reviews', verifyUser)
