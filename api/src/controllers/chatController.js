@@ -1,8 +1,8 @@
 import { io } from "../server.js";
-import { Chat } from "../models/chatModel.js";
+import  Chat  from "../models/chatModel.js";
 
 
-export class ChatClass {
+export default class ChatClass {
   static async sendChat (message, room, senderId) {
     try{
       if (message && room ){

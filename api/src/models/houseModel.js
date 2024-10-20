@@ -27,3 +27,7 @@ const houseSchema = new mongoose.Schema({
 
   'dateListed': mongoose.Schema.Types.Date,
 })
+
+const House = mongoose.model('House', houseSchema);
+
+export default House;
